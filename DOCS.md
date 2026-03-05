@@ -1002,25 +1002,7 @@ export default defineConfig({
 **Test Tarihi:** 5 Mart 2026
 **Test Ortamı:** PageSpeed Insights (Mobil simülasyonu)
 
-### Ana Sayfa (`/`)
-
-| Metrik | Skor | Durum |
-|--------|------|-------|
-| ⚡ Performance | **82** | 🟠 İyi |
-| ♿ Accessibility | **97** | 🟢 Mükemmel |
-| ✅ Best Practices | **100** | 🟢 Mükemmel |
-| 🔍 SEO | **82** | 🟠 İyi |
-
-### Ürünler (`/products`)
-
-| Metrik | Skor | Durum |
-|--------|------|-------|
-| ⚡ Performance | **100** | 🟢 Mükemmel |
-| ♿ Accessibility | **87** | 🟠 İyi |
-| ✅ Best Practices | **100** | 🟢 Mükemmel |
-| 🔍 SEO | **82** | 🟠 İyi |
-
-### Karşılaştırma (`/compare`)
+### Ana Sayfa (`/`) (Mobile)
 
 | Metrik | Skor | Durum |
 |--------|------|-------|
@@ -1029,12 +1011,66 @@ export default defineConfig({
 | ✅ Best Practices | **100** | 🟢 Mükemmel |
 | 🔍 SEO | **82** | 🟠 İyi |
 
-### Kaynaklar (`/scrapers`)
+### Ana Sayfa (`/`) (Desktop)
 
 | Metrik | Skor | Durum |
 |--------|------|-------|
-| ⚡ Performance | **41** | 🔴 Düşük |
-| ♿ Accessibility | **80** | 🟠 Orta |
+| ⚡ Performance | **100** | 🟢 Mükemmel |
+| ♿ Accessibility | **95** | 🟢 Mükemmel |
+| ✅ Best Practices | **100** | 🟢 Mükemmel |
+| 🔍 SEO | **82** | 🟠 İyi |
+
+### Ürünler (`/products`) (Mobile)
+
+| Metrik | Skor | Durum |
+|--------|------|-------|
+| ⚡ Performance | **84** | 🟠 İyi |
+| ♿ Accessibility | **80** | 🟠 İyi |
+| ✅ Best Practices | **100** | 🟢 Mükemmel |
+| 🔍 SEO | **82** | 🟠 İyi |
+
+### Ürünler (`/products`) (Desktop)
+
+| Metrik | Skor | Durum |
+|--------|------|-------|
+| ⚡ Performance | **100** | 🟢 Mükemmel |
+| ♿ Accessibility | **87** | 🟠 İyi |
+| ✅ Best Practices | **100** | 🟢 Mükemmel |
+| 🔍 SEO | **82** | 🟠 İyi |
+
+### Karşılaştırma (`/compare`) (Mobile)
+
+| Metrik | Skor | Durum |
+|--------|------|-------|
+| ⚡ Performance | **84** | 🟠 İyi |
+| ♿ Accessibility | **87** | 🟠 İyi |
+| ✅ Best Practices | **100** | 🟢 Mükemmel |
+| 🔍 SEO | **82** | 🟠 İyi |
+
+### Karşılaştırma (`/compare`) (Desktop)
+
+| Metrik | Skor | Durum |
+|--------|------|-------|
+| ⚡ Performance | **100** | 🟢 Mükemmel |
+| ♿ Accessibility | **95** | 🟢 Mükemmel |
+| ✅ Best Practices | **100** | 🟢 Mükemmel |
+| 🔍 SEO | **82** | 🟠 İyi |
+
+### Kaynaklar (`/scrapers`) (Mobile)
+
+| Metrik | Skor | Durum |
+|--------|------|-------|
+| ⚡ Performance | **83** | 🟠 İyi |
+| ♿ Accessibility | **86** | 🟠 İyi |
+| ✅ Best Practices | **100** | 🟢 Mükemmel |
+| 🔍 SEO | **82** | 🟠 İyi |
+
+### Kaynaklar (`/scrapers`) (Desktop)
+
+| Metrik | Skor | Durum |
+|--------|------|-------|
+| ⚡ Performance | **100** | 🟢 Mükemmel |
+| ♿ Accessibility | **93** | 🟢 Mükemmel |
 | ✅ Best Practices | **100** | 🟢 Mükemmel |
 | 🔍 SEO | **82** | 🟠 İyi |
 
