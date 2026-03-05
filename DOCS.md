@@ -1076,21 +1076,32 @@ export default defineConfig({
 
 ### Genel Ortalama
 
+#### Mobile
+
 | Metrik | Ortalama | Yorum |
 |--------|----------|-------|
-| Performance | **76.75** | Scrapers sayfası düşürüyor |
-| Accessibility | **87.75** | İyi, ama iyileştirilebilir |
+| Performance | **83.75** | İyi, lazy loading ile iyileştirilebilir |
+| Accessibility | **87.5** | İyi, WCAG AA hedef |
 | Best Practices | **100** | Mükemmel |
-| SEO | **82** | Meta description eklenebilir |
+| SEO | **82** | Meta description eksik |
+
+#### Desktop
+
+| Metrik | Ortalama | Yorum |
+|--------|----------|-------|
+| Performance | **100** | Mükemmel |
+| Accessibility | **92.5** | Çok iyi |
+| Best Practices | **100** | Mükemmel |
+| SEO | **82** | Meta description eksik |
 
 ### İyileştirme Fırsatları
 
-**Performance (Scrapers sayfası: 41):**
-- Büyük JS bundle optimize edilmeli (Puppeteer importları kaldırılmalı)
-- Lazy loading uygulanmalı
+**Performance (Mobile ~83):**
+- Lazy loading uygulanmalı (`React.lazy()`)
+- Bundle splitting (recharts, exceljs ayrı chunk)
 - Unused CSS kaldırılmalı
 
-**Accessibility (87 ortalama):**
+**Accessibility (~87 mobile):**
 - Tüm interactive elementlere `aria-label` eklenmeli
 - Renk kontrastı bazı badge'lerde yetersiz olabilir
 - Form elementlerine proper `label` bağlantısı
