@@ -1,0 +1,387 @@
+/* =============================================
+   CACHE STATUS COMPONENT STYLES
+   ============================================= */
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  background: var(--bg-secondary);
+  transition: all var(--duration-normal) var(--ease-default);
+  animation: slideIn var(--duration-slow) var(--ease-out);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================
+   STATUS VARIANTS
+   ============================================= */
+
+.fresh {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 204, 102, 0.1) 0%,
+    rgba(0, 204, 102, 0.05) 100%
+  );
+  border-color: var(--status-success);
+  box-shadow: 0 0 0 1px var(--status-success),
+              0 4px 12px rgba(0, 204, 102, 0.15);
+}
+
+.fresh .statusIcon {
+  color: var(--status-success);
+}
+
+.fresh .statusLabel {
+  color: var(--status-success);
+}
+
+.stale {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 170, 0, 0.1) 0%,
+    rgba(255, 170, 0, 0.05) 100%
+  );
+  border-color: var(--status-warning);
+  box-shadow: 0 0 0 1px var(--status-warning),
+              0 4px 12px rgba(255, 170, 0, 0.15);
+  animation: slideIn var(--duration-slow) var(--ease-out),
+             pulse 2s var(--ease-default) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 1px var(--status-warning),
+                0 4px 12px rgba(255, 170, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 1px var(--status-warning),
+                0 4px 20px rgba(255, 170, 0, 0.25);
+  }
+}
+
+.stale .statusIcon {
+  color: var(--status-warning);
+}
+
+.stale .statusLabel {
+  color: var(--status-warning);
+}
+
+/* =============================================
+   LOADING STATE
+   ============================================= */
+
+.loading {
+  cursor: wait;
+}
+
+.loading .content {
+  opacity: 0.7;
+}
+
+/* =============================================
+   CONTENT LAYOUT
+   ============================================= */
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  min-width: 0;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--bg-tertiary);
+}
+
+.statusIcon {
+  width: 24px;
+  height: 24px;
+  transition: transform var(--duration-fast) var(--ease-default);
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.statusLabel {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.updateTime {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: var(--leading-tight);
+}
+
+/* =============================================
+   SPINNER ANIMATIONS
+   ============================================= */
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+.spinnerTrack {
+  opacity: 0.2;
+}
+
+.spinnerIndicator {
+  animation: spin 1s linear infinite;
+}
+
+.buttonSpinner {
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =============================================
+   ACTION BUTTONS
+   ============================================= */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.refreshButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  min-height: 48px;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.refreshButton:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--border-primary);
+  transform: translateY(-1px);
+}
+
+.refreshButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.refreshButton:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.refreshButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.refreshIcon {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--duration-normal) var(--ease-default);
+}
+
+.refreshButton:hover:not(:disabled) .refreshIcon {
+  transform: rotate(180deg);
+}
+
+.dismissButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.dismissButton:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.dismissButton:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.dismissButton:active {
+  transform: scale(0.95);
+}
+
+.dismissIcon {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--duration-fast) var(--ease-default);
+}
+
+.dismissButton:hover .dismissIcon {
+  transform: rotate(90deg);
+}
+
+/* =============================================
+   SCREEN READER ONLY
+   ============================================= */
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+@media (max-width: 640px) {
+  .banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .refreshButton {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    gap: var(--space-2);
+  }
+
+  .iconWrapper {
+    width: 36px;
+    height: 36px;
+  }
+
+  .statusIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .statusLabel {
+    font-size: var(--text-xs);
+  }
+
+  .updateTime {
+    font-size: 0.6875rem;
+  }
+
+  .refreshButton {
+    min-height: 44px;
+    padding: var(--space-2);
+    font-size: var(--text-xs);
+  }
+
+  .dismissButton {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* =============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .banner,
+  .statusIcon,
+  .spinner,
+  .buttonSpinner,
+  .refreshIcon,
+  .dismissIcon,
+  .refreshButton,
+  .dismissButton {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .stale {
+    animation: none;
+  }
+}
+
+/* =============================================
+   HIGH CONTRAST MODE
+   ============================================= */
+
+@media (prefers-contrast: high) {
+  .fresh {
+    border-width: 2px;
+  }
+
+  .stale {
+    border-width: 2px;
+  }
+
+  .refreshButton,
+  .dismissButton {
+    border: 2px solid currentColor;
+  }
+}

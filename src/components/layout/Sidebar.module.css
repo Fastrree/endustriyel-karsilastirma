@@ -1,0 +1,266 @@
+/* =============================================
+   BACKDROP
+   ============================================= */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 200;
+  animation: fade-in var(--duration-fast) var(--ease-out);
+}
+
+/* =============================================
+   FLOATING FILTER PANEL
+   ============================================= */
+
+.filterPanel {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 520px;
+  max-height: 70vh;
+  z-index: 210;
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg-heavy);
+  backdrop-filter: blur(var(--glass-blur-lg));
+  -webkit-backdrop-filter: blur(var(--glass-blur-lg));
+  border: 1px solid var(--glass-border-light);
+  border-bottom: none;
+  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  box-shadow: var(--shadow-xl);
+  animation: slide-up-fade var(--duration-slow) var(--ease-spring) both;
+}
+
+/* =============================================
+   PANEL HEADER
+   ============================================= */
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--glass-border);
+  flex-shrink: 0;
+}
+
+.panelTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.panelIcon {
+  color: var(--accent-primary);
+}
+
+.panelTitle {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+}
+
+.panelActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.resetButton {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
+  color: var(--accent-primary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--duration-fast) var(--ease-default);
+}
+
+.resetButton:hover {
+  opacity: 0.7;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--text-secondary);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-default);
+}
+
+.closeButton:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-error);
+}
+
+/* =============================================
+   PANEL BODY
+   ============================================= */
+
+.panelBody {
+  padding: var(--space-5) var(--space-6);
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.section {
+  /* Each filter group */
+}
+
+.sectionTitle {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-3);
+}
+
+/* =============================================
+   CHIPS — Selectable filter items
+   ============================================= */
+
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-default);
+  white-space: nowrap;
+}
+
+.chip:hover {
+  background: var(--glass-bg-heavy);
+  border-color: var(--glass-border-light);
+  color: var(--text-primary);
+}
+
+.chipActive {
+  background: rgba(0, 102, 255, 0.12) !important;
+  border-color: rgba(0, 102, 255, 0.3) !important;
+  color: var(--accent-primary) !important;
+  box-shadow: 0 0 8px rgba(0, 102, 255, 0.15);
+}
+
+/* =============================================
+   PRICE RANGE
+   ============================================= */
+
+.priceRange {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.priceInput {
+  flex: 1;
+  padding: var(--space-3);
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  transition: all var(--duration-normal) var(--ease-default);
+}
+
+.priceInput::placeholder {
+  color: var(--text-muted);
+}
+
+.priceInput:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.15);
+}
+
+.priceSep {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* =============================================
+   PANEL FOOTER
+   ============================================= */
+
+.panelFooter {
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--glass-border);
+  flex-shrink: 0;
+}
+
+.applyButton {
+  width: 100%;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #0088FF 100%);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-default);
+  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.3);
+}
+
+.applyButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+  filter: brightness(1.1);
+}
+
+.applyButton:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 560px) {
+  .filterPanel {
+    max-width: 100%;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  }
+
+  .panelBody {
+    padding: var(--space-4);
+  }
+
+  .panelHeader {
+    padding: var(--space-4);
+  }
+
+  .panelFooter {
+    padding: var(--space-3) var(--space-4);
+  }
+}

@@ -1,0 +1,471 @@
+.header {
+  height: 52px;
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background var(--duration-slow) var(--ease-default);
+}
+
+/* Header gains glass bg on scroll — done via JS or just always subtle */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.headerGlow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(0, 102, 255, 0.15) 30%,
+      rgba(0, 102, 255, 0.3) 50%,
+      rgba(0, 102, 255, 0.15) 70%,
+      transparent 100%);
+}
+
+.container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* =============================================
+   LOGO — Minimal "EK."
+   ============================================= */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.logoIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.15) 0%, rgba(136, 68, 255, 0.1) 100%);
+  border: 1px solid rgba(0, 102, 255, 0.2);
+  border-radius: var(--radius-md);
+  transition: all var(--duration-normal) var(--ease-default);
+}
+
+.logo:hover .logoIconWrap {
+  box-shadow: 0 0 12px rgba(0, 102, 255, 0.3);
+  border-color: rgba(0, 102, 255, 0.4);
+}
+
+.logoIcon {
+  color: var(--accent-primary);
+}
+
+.logoText {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  letter-spacing: -0.03em;
+}
+
+.logoDot {
+  color: var(--accent-primary);
+}
+
+/* =============================================
+   SEARCH TRIGGER — Command palette style
+   ============================================= */
+
+.searchTrigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0 var(--space-4);
+  min-width: 260px;
+  max-width: 420px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 13px;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 38px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated gradient border on hover */
+.searchTrigger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 40%, rgba(0, 102, 255, 0.3) 50%, transparent 60%);
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-position 1.5s ease;
+  pointer-events: none;
+}
+
+.searchTrigger:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.06);
+}
+
+.searchTrigger:hover::before {
+  opacity: 1;
+  background-position: 100% 50%;
+}
+
+.searchTrigger:active {
+  transform: scale(0.99);
+}
+
+/* Search icon subtle animation */
+.searchTrigger svg {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.searchTrigger:hover svg {
+  transform: scale(1.1) rotate(-5deg);
+  opacity: 0.8;
+}
+
+.searchText {
+  flex: 1;
+  text-align: left;
+  letter-spacing: 0.01em;
+}
+
+.searchKbd {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  padding: 3px 7px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.3);
+  line-height: 1;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.searchTrigger:hover .searchKbd {
+  border-color: rgba(0, 102, 255, 0.25);
+  color: rgba(0, 102, 255, 0.6);
+  background: rgba(0, 102, 255, 0.06);
+  box-shadow: 0 0 8px rgba(0, 102, 255, 0.08);
+}
+
+/* =============================================
+   RIGHT ACTIONS
+   ============================================= */
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-default);
+  position: relative;
+}
+
+.iconButton:hover {
+  color: var(--text-primary);
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.notificationDot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  background: var(--accent-error);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 68, 68, 0.6);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.2) 0%, rgba(136, 68, 255, 0.2) 100%);
+  border: 1px solid var(--glass-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--accent-primary);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-default);
+  padding: 0;
+  font-family: var(--font-primary);
+}
+
+.avatar:hover,
+.avatarActive {
+  border-color: rgba(0, 102, 255, 0.3);
+  box-shadow: 0 0 8px rgba(0, 102, 255, 0.2);
+}
+
+.iconActive {
+  color: var(--text-primary);
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+/* =============================================
+   DROPDOWN PANELS
+   ============================================= */
+
+.dropdownWrap {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 300px;
+  background: var(--glass-bg-heavy);
+  backdrop-filter: blur(var(--glass-blur-lg));
+  -webkit-backdrop-filter: blur(var(--glass-blur-lg));
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  z-index: 200;
+  animation: scale-in var(--duration-fast) var(--ease-out) both;
+  overflow: hidden;
+}
+
+.dropdownRight {
+  min-width: 240px;
+}
+
+.dropdownHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.dropdownTitle {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+}
+
+.dropdownAction {
+  font-size: var(--text-xs);
+  color: var(--accent-primary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-primary);
+  padding: 0;
+}
+
+.dropdownAction:hover {
+  opacity: 0.7;
+}
+
+.dropdownBody {
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.dropdownEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-4);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.dropdownDivider {
+  height: 1px;
+  background: var(--glass-border);
+}
+
+/* Notification Items */
+.notifItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-default);
+}
+
+.notifItem:hover {
+  background: var(--glass-bg-light);
+}
+
+.notifUnread {
+  background: rgba(0, 102, 255, 0.03);
+}
+
+.notifDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: transparent;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.notifDotActive {
+  background: var(--accent-primary);
+  box-shadow: 0 0 4px rgba(0, 102, 255, 0.4);
+}
+
+.notifContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.notifMessage {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.notifTime {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* Avatar Info */
+.avatarInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.avatarLarge {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.2) 0%, rgba(136, 68, 255, 0.2) 100%);
+  border: 1px solid var(--glass-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-bold);
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.avatarName {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+}
+
+.avatarEmail {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* Menu Item */
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+  text-align: left;
+}
+
+.menuItem:hover {
+  background: var(--glass-bg-light);
+  color: var(--text-primary);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 640px) {
+  .searchTrigger {
+    min-width: 0;
+    max-width: 200px;
+  }
+
+  .searchText {
+    display: none;
+  }
+
+  .searchKbd {
+    display: none;
+  }
+
+  .container {
+    padding: 0 var(--space-3);
+  }
+
+  .dropdown {
+    min-width: 260px;
+    right: -8px;
+  }
+}

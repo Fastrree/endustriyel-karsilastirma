@@ -1,0 +1,121 @@
+.card {
+  background: var(--gradient-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  transition: all var(--duration-normal) var(--ease-default);
+  position: relative;
+}
+
+/* Subtle top highlight */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--glass-border-light) 50%,
+      transparent 100%);
+  pointer-events: none;
+}
+
+/* Variants */
+.default {
+  /* Base card styles inherited from .card */
+  background: var(--gradient-card);
+}
+
+.elevated {
+  box-shadow: var(--shadow-glass);
+}
+
+.outlined {
+  background: transparent;
+  border: 1px solid var(--border-primary);
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border-light);
+}
+
+/* Padding */
+.padding-none .content {
+  padding: 0;
+}
+
+.padding-sm .content {
+  padding: var(--space-3);
+}
+
+.padding-md .content {
+  padding: var(--space-5);
+}
+
+.padding-lg .content {
+  padding: var(--space-6);
+}
+
+/* Hover Effect */
+.hoverable {
+  cursor: default;
+}
+
+.hoverable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), var(--glow-subtle);
+  border-color: var(--glass-border-light);
+}
+
+/* Clickable */
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  border-color: rgba(0, 102, 255, 0.3);
+  box-shadow: var(--glow-subtle);
+  transform: translateY(-2px);
+}
+
+.clickable:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.clickable:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.3);
+}
+
+/* Header */
+.header {
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--glass-border);
+  background: var(--glass-bg-light);
+}
+
+.padding-none .header {
+  padding: var(--space-3) var(--space-4);
+}
+
+/* Content */
+.content {
+  /* Padding handled by padding-* classes */
+  position: relative;
+}
+
+/* Footer */
+.footer {
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--glass-border);
+  background: var(--glass-bg-light);
+}
+
+.padding-none .footer {
+  padding: var(--space-3) var(--space-4);
+}

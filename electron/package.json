@@ -1,0 +1,7 @@
+{
+  "name": "endustriyel-karsilastirma-electron",
+  "version": "0.0.0",
+  "private": true,
+  "main": "main.cjs",
+  "type": "commonjs"
+}
